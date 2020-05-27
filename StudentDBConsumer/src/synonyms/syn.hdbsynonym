@@ -1,0 +1,26 @@
+{
+  "Tables.Students": {
+    "target": {
+      "object": "Tables.Students",
+      "schema": "STUDENT_ANONYMIZATION_APP_HDI_STUDENTDB_1"
+    }
+  },
+  "StudentsDP": {
+    "target": {
+      "object": "StudentsDP",
+      "schema": "STUDENT_ANONYMIZATION_APP_HDI_STUDENTDB_1"
+    }
+  },
+  "StudentsKA": {
+    "target": {
+      "object": "StudentsKA",
+      "schema": "STUDENT_ANONYMIZATION_APP_HDI_STUDENTDB_1"
+    }
+  },
+  "StudentsMask": {
+    "target": {
+      "object": "StudentsMask",
+      "schema": "STUDENT_ANONYMIZATION_APP_HDI_STUDENTDB_1"
+    }
+  }
+}

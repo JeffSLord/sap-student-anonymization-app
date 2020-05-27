@@ -1,0 +1,8 @@
+{
+	"role": {
+		"name": "access_mask",
+		"schema_privileges": [{
+			"privileges": ["SELECT"]
+		}]
+	}
+}

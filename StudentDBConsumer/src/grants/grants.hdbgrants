@@ -1,0 +1,12 @@
+{
+	"JEFF-jwdffabztupzmv52-student-anonymization-app-hdi_StudentDB": {
+		"object_owner": {
+			"container_roles": [
+				"access_unmask"
+			]
+		},
+		"application_user": {
+			"container_roles": ["access_unmask"]
+		}
+	}
+}

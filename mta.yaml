@@ -9,8 +9,37 @@ modules:
    requires:
     - name: hdi_StudentDB
 
+ - name: StudentDBConsumer
+   type: hdb
+   path: StudentDBConsumer
+   requires:
+    - name: hdi_StudentDBConsumer_2
+      properties:
+        TARGET_CONTAINER: ~{hdi-container-name_3}
+    - name: cross-container-service-1
+      group: SERVICE_REPLACEMENTS
+      properties:
+        key: ServiceName_1
+        service: ~{the-service-name}
+                          
 resources:
  - name: hdi_StudentDB
    properties:
       hdi-container-name: ${service-name}
    type: com.sap.xs.hdi-container
+
+ - name: hdi_StudentDBConsumer_2
+   parameters:
+      config:
+         schema: STUDENT_DB_CONSUMER
+   properties:
+      hdi-container-name_3: ${service-name}
+   type: com.sap.xs.hdi-container
+
+ - name: cross-container-service-1
+   parameters:
+      service-name: JEFF-jwdffabztupzmv52-student-anonymization-app-hdi_StudentDB
+   properties:
+      the-service-name: ${service-name}
+   type: org.cloudfoundry.existing-service
+

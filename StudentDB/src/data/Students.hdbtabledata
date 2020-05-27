@@ -3,10 +3,10 @@
 	"imports":
 	[
         {
-            "target_table": "StudentApp.StudentDB::Tables.Students",
+            "target_table": "Tables.Students",
             "source_data": {
                 "data_type": "CSV",
-                "file_name": "StudentApp.StudentDB::Students.csv",
+                "file_name": "Students.csv",
                 "has_header": true,
 				"type_config" : { 
 					"delimiter" : ",", 

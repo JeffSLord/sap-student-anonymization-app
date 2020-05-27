@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="StudentApp.StudentDB::StudentsKA" applyPrivilegeType="NONE" dataCategory="DEFAULT" schemaVersion="3.0" outputViewType="Projection" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
-<descriptions defaultDescription="Students"/>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="StudentsDP" applyPrivilegeType="NONE" dataCategory="DEFAULT" schemaVersion="3.0" outputViewType="Projection" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
+<descriptions defaultDescription="StudentsDP"/>
 <localVariables/>
 <variableMappings/>
 <dataSources>
-  <DataSource id="StudentApp.StudentDB::Tables.Students">
-    <resourceUri>StudentApp.StudentDB::Tables.Students</resourceUri>
+  <DataSource id="Tables.Students">
+    <resourceUri>Tables.Students</resourceUri>
   </DataSource>
 </dataSources>
 <calculationViews>
-  <calculationView xsi:type="Calculation:AnonymizeView" id="Anonymize_1" method="kAnonymity">
+  <calculationView xsi:type="Calculation:AnonymizeView" id="Anonymize_1" method="differentialPrivacy">
     <viewAttributes>
       <viewAttribute id="ID" aggregationType="sum">
         <descriptions defaultDescription="ID"/>
@@ -29,7 +29,7 @@
     </viewAttributes>
     <calculatedViewAttributes/>
     <restrictedViewAttributes/>
-    <input node="StudentApp.StudentDB::Tables.Students">
+    <input node="Tables.Students">
       <mapping xsi:type="Calculation:AttributeMapping" target="ID" source="ID"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="SITE" source="SITE"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="GENDER" source="GENDER"/>
@@ -38,13 +38,9 @@
     </input>
     <anonymizeParameterization>
       <seqColumn>ID</seqColumn>
-      <k>3</k>
-      <qidColumn id="SITE"/>
-      <qidColumn id="GENDER"/>
-      <qidColumn id="AGE"/>
-      <qidColumnHierarchy id="SITE">Glasgow;North;*Edinburgh;North;*Cambridge;South;*London;South;*Oxford;South;*Newcastle;North;*Manchester;North;*</qidColumnHierarchy>
-      <qidColumnHierarchy id="GENDER">Male;*Female;*</qidColumnHierarchy>
-      <qidColumnHierarchy id="AGE">19;Under 21;*18;Under 21;*20;Under 21;*21;21 and over;*23;21 and over;*24;21 and over;*22;21 and over;*</qidColumnHierarchy>
+      <epsilon>5</epsilon>
+      <sensitivity>100</sensitivity>
+      <noisedColumn>SCORE</noisedColumn>
     </anonymizeParameterization>
   </calculationView>
 </calculationViews>
@@ -83,7 +79,7 @@
     </shape>
   
     <shape expanded="true" modelObjectName="Anonymize_1" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="110" y="266"/>
+      <upperLeftCorner x="110" y="223"/>
       <rectangleSize height="30" width="140"/>
     </shape>
   </shapes>
