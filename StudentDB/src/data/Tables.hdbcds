@@ -1,3 +1,5 @@
+namespace StudentApp.StudentDB;
+
 context Tables {
     entity Students {
         key ID     : Integer not null;
